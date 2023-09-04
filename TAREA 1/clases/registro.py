@@ -45,7 +45,8 @@ class Registro :
         return True
 
     def eliminar(self, id) :
-        posicionUsuarioAEliminar = self.buscarPosicion(id)
-        if posicionUsuarioAEliminar == None : return False
-
+        for i in self.usuarios:
+           if i.id==id:
+               self.usuarios.remove(i)
+    
         
