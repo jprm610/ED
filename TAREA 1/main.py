@@ -1,4 +1,5 @@
 from clases.registro import Registro
+from clases.fecha import Fecha
 from clases.usuario import Usuario
 
 array=Registro(10)
@@ -11,10 +12,10 @@ print("-------------------------------------------------------------------------
 
 # Agregar
 print("Agregar")
-array.agregar(Usuario(11,"A","15/08/09","cali","cr 54 74 15","6036816","@"))
-array.agregar(Usuario(15,"B","15/08/09","cali","cr 54 74 15","6036816","@"))
-array.agregar(Usuario(13,"C","15/08/09","cali","cr 54 74 15","6036816","@"))
-array.agregar(Usuario(18,"D","15/08/09","cali","cr 54 74 15","6036816","@"))
+array.agregar(Usuario(11,"A",Fecha('15','08','09'),"cali","cr 54 74 15","6036816","@"))
+array.agregar(Usuario(15,"B",Fecha('15','08','09'),"cali","cr 54 74 15","6036816","@"))
+array.agregar(Usuario(13,"C",Fecha('15','08','09'),"cali","cr 54 74 15","6036816","@"))
+array.agregar(Usuario(18,"D",Fecha('15','08','09'),"cali","cr 54 74 15","6036816","@"))
 array.print()
 print("----------------------------------------------------------------------------------------")
 
