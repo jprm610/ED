@@ -7,7 +7,7 @@ class Direccion :
         self.ciudad = ciudad
 
     def toString(self) :
-        return f"{self.calle} {self.noCalle} #{self.nomenclatura}, {self.barrio}, {self.ciudad}"
+        return f"{self.calle} {self.noCalle} {self.nomenclatura} {self.barrio} {self.ciudad}"
 
     # GETTERS
     def getCalle(self) :

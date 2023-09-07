@@ -1,5 +1,6 @@
 from clases.usuario import Usuario
 from clases.fecha import Fecha
+from clases.direccion import Direccion
 
 class Registro :
     def __init__(self, capacidad) -> None:
@@ -84,6 +85,8 @@ class Registro :
                 email = valores[6]
                 telefono = valores[5]
                 direccion = valores[4]
+                direccion = direccion.split(' ')
+                direccion = Direccion(direccion[0], direccion[1], direccion[2], direccion[3], direccion[4])
                 usuario = Usuario(id,nombre,fecha_nac,ciudad,direccion,telefono, email )
                 self.agregar(usuario)
 
@@ -91,7 +94,7 @@ class Registro :
         with open(nombre_archivo, 'w') as archivo:
             for usuario in self.usuarios:
                 if usuario is not None:
-                    linea = f"{usuario.id},{usuario.nombre},{'/'.join([usuario.fechaNacimiento.getdd(), usuario.fechaNacimiento.getmm(), usuario.fechaNacimiento.getaa()])},{usuario.ciudadNacimiento},{usuario.direccion},{usuario.telefono},{usuario.email}\n"
+                    linea = f"{usuario.id},{usuario.nombre},{usuario.fechaNacimiento.toString()},{usuario.ciudadNacimiento},{usuario.direccion.toString()},{usuario.telefono},{usuario.email}\n"
                     archivo.write(linea)
 
     def print(self) :
