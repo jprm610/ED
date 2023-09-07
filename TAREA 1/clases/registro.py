@@ -14,11 +14,9 @@ class Registro :
                 if user.getId() == id : return user
         return None
     
-    def buscarPosicion(self, id) :
+    def buscarPosicion(self, index) :
         # Buscar en las entradas que si contengan usuarios
-        for i in range(len(self.usuarios)) :
-            if self.usuarios[i] != None :
-                if self.usuarios[i].getId() == id : return i
+        if self.usuarios[index] is not None : return self.usuarios[index]
         return None
 
     def agregar(self, usuario: Usuario) :
@@ -30,6 +28,10 @@ class Registro :
         self.contador += 1
 
         for i in range(len(self.usuarios)) :
+            """a = usuario.getId()
+            if self.usuarios[i] != None : b = self.usuarios[i].id
+            else : b = False"""
+
             if self.usuarios[i] == None or usuario.getId() < self.usuarios[i].id :
                 # Insertar el elemento
                 temp = self.usuarios[i]
@@ -72,7 +74,7 @@ class Registro :
             lista_info.append(valores)
         
             if len(valores) == 7:
-                id = valores[0]
+                id = int(valores[0])
                 nombre = valores[1]
                 fecha_nac = valores[2]
                 ciudad= valores[3]
@@ -82,9 +84,14 @@ class Registro :
                 usuario = Usuario(id,nombre,fecha_nac,ciudad,direccion,telefono, email )
                 self.agregar(usuario)
 
-    def tofile(self, nombre_archivo="TAREA 1/realizadoPorChatGPT.txt"):
+    def tofile(self, nombre_archivo="TAREA 1/realizadoPorChatGPT(despues).txt"):
         with open(nombre_archivo, 'w') as archivo:
             for usuario in self.usuarios:
                 if usuario is not None:
                     linea = f"{usuario.id},{usuario.nombre},{usuario.fechaNacimiento},{usuario.ciudadNacimiento},{usuario.direccion},{usuario.telefono},{usuario.email}\n"
                     archivo.write(linea)
+
+    def print(self) :
+        for user in self.usuarios :
+            if user is not None :
+                print(user.toString())

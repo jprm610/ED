@@ -1,0 +1,8 @@
+1,Andres Felipe Garcia,16/07/00,Medellin,Cr 43A 74 43,3024311775,agarciaor@unal.edu.co
+5,Juan Pablo Robledo,01/02/02,Manizales,Cll 54 23 33,3215838597,jurobledom@unal.edu.co
+3,Melissa Franco Bernal,22/10/00,Itagüi,Cr 52C 72 35,3007281360,mfrancob@unal.edu.co
+2,Thomas Martinez Zuluaga,11/08/90,Pereira,Cll 33A 89B 111,3015804235,thmartinezz@unal.edu.co
+7,Viviana Meza,22/12/76,Manizales,Cll 54 23 33,3016966580,vivim@gmail.com
+11,Luz Yamile Orrego,09/11/78,Medellin,Cr 43A 74 43,6036816,lorrego@hotmail.com
+9,Gustavo Robledo,17/10/70,Chinchina,Cll 54 23 33,3147711497,gustavorob@gmail.com
+8,Ederleison Garcia Higuita,13/06/75,Medellin,Cr 43A 74 43,6036816,edergarciador@outlook.com
