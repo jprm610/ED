@@ -44,9 +44,42 @@ class Registro :
 
         return True
 
-    def eliminar(self, id) :
-        for i in self.usuarios:
-           if i.id==id:
-               self.usuarios.remove(i)
-    
+  
+    def eliminar(self, id):
+        for i in range(len(self.usuarios)):
+            if self.usuarios[i] is not None:
+                if self.usuarios[i].id == id:
+                    self.usuarios[i] = None
+        for i in range(len(self.usuarios)):
+            j=len(self.usuarios)-1
+            if self.usuarios[i]==None:
+                while i!=j:
+                    temp=self.usuarios[i+1]
+                    self.usuarios[i+1]=self.usuarios[i]
+                    self.usuarios[i]=temp
+                    i+=1
+    def importar(self, nombre_archivo):
+        lista_info=[]
+        with open(nombre_archivo, 'r') as archivo:
+            lineas = archivo.readlines()
+        for linea in lineas:
+            linea = linea.strip()
+            valores = linea.split(',')
+            lista_info.append(valores)
         
+            if len(valores) == 7:
+                id = valores[0]
+                nombre = valores[1]
+                fecha_nac = valores[2]  # Convierte la edad a un entero
+                ciudad= valores[3]
+                email = valores[6]
+                telefono = valores[5]
+                direccion = valores[4]
+                usuario = Usuario(id,nombre,fecha_nac,ciudad,direccion,telefono, email )
+                self.agregar(usuario)
+    def tofile(self, nombre_archivo):
+        with open(nombre_archivo, 'w') as archivo:
+            for usuario in self.usuarios:
+                if usuario is not None:
+                    linea = f"{usuario.id},{usuario.nombre},{usuario.fechaNacimiento},{usuario.ciudadNacimiento},{usuario.direccion},{usuario.telefono},{usuario.email}\n"
+                    archivo.write(linea)

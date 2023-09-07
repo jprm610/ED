@@ -1,10 +1,8 @@
 from clases.registro import Registro
 from clases.usuario import Usuario
 
-array = Registro(2)
-#array.agregar(Usuario(1,"Andres","16/07/00","Medellin"))
-array.agregar( Usuario(1,"Meli"))
-array.agregar(Usuario(2,"Pablito"))
-array.eliminar(1)
-for i in array.usuarios:
-    print(i.id,i.nombre)
+array=Registro(6)
+array.agregar(Usuario(9,"C","15/08/09","cali","cr 54 74 15","6036816","@"))
+array.agregar(Usuario(8,"C","15/08/09","cali","cr 54 74 15","6036816","@"))
+array.agregar(Usuario(7,"C","15/08/09","cali","cr 54 74 15","6036816","@"))
+array.tofile("C:\\Users\\agarc\\OneDrive\\Escritorio\\usuarios_practica.txt")
