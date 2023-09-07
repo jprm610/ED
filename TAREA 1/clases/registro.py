@@ -50,6 +50,8 @@ class Registro :
             if self.usuarios[i] is not None:
                 if self.usuarios[i].id == id:
                     self.usuarios[i] = None
+                    self.contador -= 1
+
         for i in range(len(self.usuarios)):
             j=len(self.usuarios)-1
             if self.usuarios[i]==None:
@@ -58,10 +60,12 @@ class Registro :
                     self.usuarios[i+1]=self.usuarios[i]
                     self.usuarios[i]=temp
                     i+=1
-    def importar(self, nombre_archivo):
+
+    def importar(self, nombre_archivo="TAREA 1/realizadoPorChatGPT.txt"):
         lista_info=[]
         with open(nombre_archivo, 'r') as archivo:
             lineas = archivo.readlines()
+
         for linea in lineas:
             linea = linea.strip()
             valores = linea.split(',')
@@ -70,14 +74,15 @@ class Registro :
             if len(valores) == 7:
                 id = valores[0]
                 nombre = valores[1]
-                fecha_nac = valores[2]  # Convierte la edad a un entero
+                fecha_nac = valores[2]
                 ciudad= valores[3]
                 email = valores[6]
                 telefono = valores[5]
                 direccion = valores[4]
                 usuario = Usuario(id,nombre,fecha_nac,ciudad,direccion,telefono, email )
                 self.agregar(usuario)
-    def tofile(self, nombre_archivo):
+
+    def tofile(self, nombre_archivo="TAREA 1/realizadoPorChatGPT.txt"):
         with open(nombre_archivo, 'w') as archivo:
             for usuario in self.usuarios:
                 if usuario is not None:
