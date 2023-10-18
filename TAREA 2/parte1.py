@@ -6,6 +6,7 @@ def main() :
 def checkListaSimple() :
     from clases.listaSimple import ListaSimple
 
+    print("LISTA SIMPLE")
     LS = ListaSimple()
 
     # addFirst()
@@ -41,6 +42,7 @@ def checkListaDoble() :
     from clases.listaDoble import ListaDoble
     from clases.nodoDoble import NodoDoble
 
+    print("LISTA DOBLE")
     LD = ListaDoble()
 
     # addFirst()
