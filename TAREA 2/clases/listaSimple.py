@@ -68,4 +68,5 @@ class ListaSimple :
             if node.getNext() == None : break
             node = node.getNext()
             c += 1
+        print(f"Size: {self.size}")
         
