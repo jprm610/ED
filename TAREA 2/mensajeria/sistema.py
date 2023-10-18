@@ -5,7 +5,6 @@ from clases.listaSimple import ListaSimple
 
 class Sistema :
     def __init__(self) -> None:
-        self.empleados = ListaSimple()
         self.credenciales = ListaSimple()
 
     def importarEmpleados(self, nombreArchivoA="Empleados.txt", nombreArchivoB="Password.txt") :
@@ -38,4 +37,30 @@ class Sistema :
                 e = Empleado(nombre, cc, password, fechaNac, ciudadNac, Contacto(celular, email, direccion))
             else :
                 e = Administrador(nombre, cc, password, fechaNac, ciudadNac, Contacto(celular, email, direccion))
-            self.empleados.addLast(e)
+            self.credenciales.addLast(e)
+
+    def login(self) -> Empleado :
+        print("LOGIN")
+        while True :
+            cedula = input("Cedula: ")
+            password = input("Contraseña: ")
+            
+            # Search user
+            user = None
+            tmp = self.credenciales.head
+            while True :
+                if tmp.getData().cedula == cedula :
+                    user = tmp
+                    break
+                if tmp.getNext() == None : break
+                tmp = tmp.getNext()
+            if user == None : 
+                print("Usuario y/o contraseña incorrecta")
+                continue
+
+            # Verify password
+            if user.getData().contraseña != password :
+                print("Usuario y/o contraseña incorrecta")
+                continue
+            
+            return user.getData()
