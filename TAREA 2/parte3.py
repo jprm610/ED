@@ -8,6 +8,9 @@ def main() :
 
     while True :
         user = root.login()
+
+        user.importarMensajes()
+
         print(f"Bienvenido/a {user.nombre}!")
         
         while True :
