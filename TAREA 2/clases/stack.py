@@ -18,7 +18,4 @@ class Stack(ListaSimple):
             return self.first().getData()
         else:
             return None
-        
-    def print(self) :
-        self.print()
     

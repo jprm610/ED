@@ -25,6 +25,7 @@ class ListaDoble:
         while True :
             if c == i : return tmp.getData()
             tmp = tmp.getNext()
+            c += 1
 
     def addFirst(self, e:object):
         nodo = NodoDoble(e)
