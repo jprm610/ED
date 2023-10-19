@@ -31,9 +31,9 @@ def main() :
                 elif entrada == '2' : user.mensajesLeidos()
                 elif entrada == '3' : user.borradores()
                 elif entrada == '4' : user.redactarMensaje(root)
-                elif entrada == '5' : user.agregarUsuario()
+                elif entrada == '5' : user.agregarUsuario(root)
                 elif entrada == '6' : user.cambiarContraseña()
-                elif entrada == '7' : user.eliminarEmpleado()
+                elif entrada == '7' : user.eliminarEmpleado(root)
                 else : break
             elif isinstance(user, Empleado) :
                 print("0. Cerrar sesión")

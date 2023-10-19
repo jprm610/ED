@@ -151,6 +151,16 @@ class ListaDoble:
             temp_next.setPrev(m)
             self.size += 1
 
+    def toList(self) -> list :
+        lista = []
+        if self.isEmpty() : return lista
+        tmp = self.head
+        while True :
+            lista.append(tmp.getData())
+            if tmp.getNext() == None : break
+            tmp = tmp.getNext()
+        return lista
+
     def print(self) :
         c = 1
         node = self.head

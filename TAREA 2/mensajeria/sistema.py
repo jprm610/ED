@@ -39,6 +39,19 @@ class Sistema :
                 e = Administrador(nombre, cc, password, fechaNac, ciudadNac, Contacto(celular, email, direccion))
             self.credenciales.addLast(e)
 
+    def exportarEmpleados(self, nombreArchivoA="Empleados.txt", nombreArchivoB="Password.txt") :
+        with open(nombreArchivoA, "w") as file :
+            for e in self.credenciales.toList() :
+                file.write(f"{e.nombre} {e.cedula} {e.fechaNacimiento} {e.ciudadNacimiento} {e.contacto.telefono} {e.contacto.email} {e.contacto.direccion}\n")
+
+        with open(nombreArchivoB, "w") as file :
+            for e in self.credenciales.toList() :
+                if isinstance(e, Administrador) :
+                    rol = "administrador"
+                else :
+                    rol = "empleado"
+                file.write(f"{e.cedula} {e.contraseña} {rol}\n")
+
     def login(self) -> Empleado :
         print("LOGIN")
         while True :
