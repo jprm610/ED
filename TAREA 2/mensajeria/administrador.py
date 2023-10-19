@@ -8,8 +8,9 @@ class Administrador(Empleado) :
     def agregarUsuario(self) :
         pass
 
-    def cambiarContraseña(self) :
-        pass
+    def cambiarContraseña(self,empleado,newPassword) :
+        empleado.self.contraseña=newPassword
+        return empleado.self.contraseña
 
     def eliminarUsuario(self) :
         pass
