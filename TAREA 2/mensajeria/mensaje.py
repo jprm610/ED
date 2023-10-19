@@ -7,7 +7,10 @@ class Mensaje :
         self.texto = texto
         self.bandeja = bandeja
         
-    def toString(self) :
+    def toString(self, short=True) :
+        if short :
+            return f"{self.time} / {self.remitente} -> {self.destinatario} / {self.asunto}"
+
         return f"""
             {self.remitente} -> {self.destinatario} - {self.time}
             {self.asunto}

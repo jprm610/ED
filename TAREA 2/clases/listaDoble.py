@@ -18,6 +18,14 @@ class ListaDoble:
     def last(self):
         return self.tail
     
+    def get(self, i) :
+        if i >= self.getsize() : raise Exception("i out of bounds!")
+        c = 0
+        tmp = self.head
+        while True :
+            if c == i : return tmp.getData()
+            tmp = tmp.getNext()
+
     def addFirst(self, e:object):
         nodo = NodoDoble(e)
         if self.isEmpty() :
