@@ -9,8 +9,22 @@ class Administrador(Empleado) :
         pass
 
     def cambiarContraseña(self,empleado,newPassword) :
-        empleado.self.contraseña=newPassword
-        return empleado.self.contraseña
+        empleado.contraseña=newPassword
+        return empleado.contraseña
 
-    def eliminarUsuario(self) :
-        pass
+    def eliminarEmpleado(self, cedula, sistema):
+        empleado_borrar = None
+        tmp = sistema.credenciales.head
+
+        while tmp:
+            if tmp.getData().cedula == cedula:
+                empleado_borrar = tmp.getData()
+                sistema.credenciales.remove(tmp) 
+                return f"El empleado con cédula {cedula} ha sido eliminado."
+
+        return f"No existe empleado con cédula {cedula}."
+
+
+
+
+    

@@ -1,5 +1,5 @@
 from clases.nodoSimple import Queue
-class Leido:
+class Leido(Queue):
     def __init__(self) -> None:
         self.bandeja_leidos=Queue()
     def add_mensaje(self,mensaje):
