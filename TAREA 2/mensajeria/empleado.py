@@ -97,8 +97,15 @@ class Empleado :
         time = strftime("%d/%m/%Y %H:%M", gmtime())
         asunto = input("Asunto: ")
         texto = input("Texto: ")
-
-        self.mensajesEnviados.agregar(Mensaje(self.nombre, destinatario.nombre, time, asunto, texto, "BA"))
+        print("0. Volver sin guardar")
+        print("1. Enviar")
+        print("2. Guardar como borrador")
+        entrada = input("Seleccione lo que quiera hacer: ")
+        if entrada == '1' :
+            self.mensajesEnviados.agregar(Mensaje(self.nombre, destinatario.nombre, time, asunto, texto, "BA"))
+        elif entrada == '2' :
+            self.bandejaDeBorradores.agregar(Mensaje(self.nombre, destinatario.nombre, time, asunto, texto, "B"))
+        else : return
 
     def toString(self) :
         return f"{self.nombre} {self.cedula}"
