@@ -19,3 +19,13 @@ class Entrada(ListaDoble) :
             if tmp.getNext() == None : break
             tmp = tmp.getNext()
             c += 1
+
+    def toList(self) -> list :
+        lista = []
+        if self.isEmpty() : return lista
+        tmp = self.head
+        while True :
+            lista.append(tmp.getData())
+            if tmp.getNext() == None : break
+            tmp = tmp.getNext()
+        return lista

@@ -30,7 +30,7 @@ def main() :
                 elif entrada == '1' : user.bandejaEntrada()
                 elif entrada == '2' : user.mensajesLeidos()
                 elif entrada == '3' : user.borradores()
-                elif entrada == '4' : user.redactarMensaje()
+                elif entrada == '4' : user.redactarMensaje(root)
                 elif entrada == '5' : user.agregarUsuario()
                 elif entrada == '6' : user.cambiarContraseña()
                 elif entrada == '7' : user.eliminarEmpleado()
@@ -46,7 +46,9 @@ def main() :
                 elif entrada == '1' : user.bandejaEntrada()
                 elif entrada == '2' : user.mensajesLeidos()
                 elif entrada == '3' : user.borradores()
-                elif entrada == '4' : user.redactarMensaje()
+                elif entrada == '4' : user.redactarMensaje(root)
                 else : break
+
+        user.exportarMensajes()
 
 main()

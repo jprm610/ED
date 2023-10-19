@@ -64,3 +64,11 @@ class Sistema :
                 continue
             
             return user.getData()
+    
+    def empleadoPorID(self, id) :
+        tmp = self.credenciales.head
+        while True :
+            if tmp.getData().cedula == id : return tmp.getData()
+            if tmp.getNext() == None : break
+            tmp = tmp.getNext()
+        return None

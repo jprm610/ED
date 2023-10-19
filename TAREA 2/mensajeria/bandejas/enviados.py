@@ -1,12 +1,12 @@
-from clases.stack import Stack
+from clases.queue import Queue
 from mensajeria.mensaje import Mensaje
 
-class Borradores(Stack) :
+class Enviados(Queue) :
     def __init__(self) -> None:
         super().__init__()
 
     def agregar(self, m:Mensaje) :
-        self.push(m)
+        self.enqueue(m)
 
     def print(self) :
         if self.size == 0 : 

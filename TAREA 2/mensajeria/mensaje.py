@@ -17,3 +17,6 @@ class Mensaje :
             ---------------------------------------------------
             {self.texto}
             """
+
+    def toFile(self) :
+        return f"{self.remitente}, {self.destinatario}, {self.time}, {self.asunto}, {self.texto}, {self.bandeja}"

@@ -3,6 +3,7 @@ from mensajeria.mensaje import Mensaje
 from mensajeria.bandejas.entrada import Entrada
 from mensajeria.bandejas.leidos import Leido
 from mensajeria.bandejas.borradores import Borradores
+from mensajeria.bandejas.enviados import Enviados
 
 class Empleado :
     def __init__(self, nombre, cedula, contraseña, fechaNacimiento, ciudadNacimiento, contacto:Contacto) -> None:
@@ -15,6 +16,7 @@ class Empleado :
         self.bandejaDeEntrada = Entrada()
         self.bandejaDeLeidos = Leido()
         self.bandejaDeBorradores = Borradores()
+        self.mensajesEnviados = Enviados()
 
     def importarMensajes(self, nombreArchivo="Mensajes.txt") :
         with open(nombreArchivo, "r") as file :
@@ -36,6 +38,14 @@ class Empleado :
                 self.bandejaDeLeidos.add_mensaje(Mensaje(remitente, destinatario, time, asunto, texto, bandeja))
             elif remitente == self.nombre and bandeja == 'B' :
                 self.bandejaDeBorradores.agregar(Mensaje(remitente, destinatario, time, asunto, texto, bandeja))
+            else :
+                self.mensajesEnviados.agregar(Mensaje(remitente, destinatario, time, asunto, texto, bandeja))
+
+    def exportarMensajes(self, nombreArchivo="Mensajes.txt") :
+        mensajes = self.bandejaDeEntrada.toList() + self.bandejaDeLeidos.toList() + self.bandejaDeBorradores.toList() + self.mensajesEnviados.toList()
+        with open(nombreArchivo, "w") as file :
+            for m in mensajes :
+                file.writelines(f"{m.toFile()}\n")
 
     def bandejaEntrada(self) :
         while True :
@@ -66,17 +76,29 @@ class Empleado :
         while True :
             print("BANDEJA DE BORRADORES")
             self.bandejaDeBorradores.print()
-            entrada = input("Seleccione un mensaje o 0 para regresar: ")
-            if entrada == '0' : return
-
-            mensajeParaEditar = self.bandejaDeBorradores.get(int(entrada) - 1)
-            print(mensajeParaEditar.toString(False))
-            entrada = input("Presione 1 para descartar el mensaje o 0 para volver: ")
+            
+            print("0. Volver")
+            print("1. Enviar ultimo borrador")
+            print("2. Descartar ultimo borrador")
+            entrada = input("Seleccione lo que quiera hacer: ")
             if entrada == '1' :
+                self.mensajesEnviados.agregar(self.bandejaDeBorradores.pop())
+            elif entrada == '2' :
                 self.bandejaDeBorradores.pop()
+            else : return
 
-    def redactarMensaje(self) :
-        pass
+    def redactarMensaje(self, sistema) :
+        from time import gmtime, strftime
+
+        print("REDACTAR MENSAJE")
+        cc = input('Ingrese la cedula del destinatario: ')
+
+        destinatario = sistema.empleadoPorID(cc)
+        time = strftime("%d/%m/%Y %H:%M", gmtime())
+        asunto = input("Asunto: ")
+        texto = input("Texto: ")
+
+        self.mensajesEnviados.agregar(Mensaje(self.nombre, destinatario.nombre, time, asunto, texto, "BA"))
 
     def toString(self) :
         return f"{self.nombre} {self.cedula}"
