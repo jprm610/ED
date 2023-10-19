@@ -1,8 +1,19 @@
-from clases.nodoSimple import Queue
+from clases.queue import Queue
 class Leido(Queue):
     def __init__(self) -> None:
-        self.bandeja_leidos=Queue()
+        super().__init__()
+
     def add_mensaje(self,mensaje):
-        self.bandeja_leidos.enqueue(mensaje)
+        self.enqueue(mensaje)
+
     def first_leidos(self):
-       return self.bandeja_leidos.first()
+       return self.first()
+    
+    def print(self) :
+        c = 1
+        tmp = self.head
+        while True :
+            print(c, tmp.getData().toString())
+            if tmp.getNext() == None : break
+            tmp = tmp.getNext()
+            c += 1

@@ -1,6 +1,7 @@
 from mensajeria.contacto import Contacto
 from mensajeria.mensaje import Mensaje
 from mensajeria.bandejas.entrada import Entrada
+from mensajeria.bandejas.leidos import Leido
 
 class Empleado :
     def __init__(self, nombre, cedula, contraseña, fechaNacimiento, ciudadNacimiento, contacto:Contacto) -> None:
@@ -11,6 +12,7 @@ class Empleado :
         self.ciudadNacimiento = ciudadNacimiento
         self.contacto = contacto
         self.bandejaDeEntrada = Entrada()
+        self.bandejaDeLeidos = Leido()
 
     def importarMensajes(self, nombreArchivo="Mensajes.txt") :
         with open(nombreArchivo, "r") as file :
@@ -28,6 +30,8 @@ class Empleado :
 
             if destinatario == self.nombre and bandeja == "BA" :
                 self.bandejaDeEntrada.addFirst(Mensaje(remitente, destinatario, time, asunto, texto, bandeja))
+            elif destinatario == self.nombre and bandeja == "ML" :
+                self.bandejaDeLeidos.add_mensaje(Mensaje(remitente, destinatario, time, asunto, texto, bandeja))
 
     def bandejaEntrada(self) :
         while True :
@@ -37,12 +41,22 @@ class Empleado :
             if entrada == '0' : return
 
             mensajeParaLeer = self.bandejaDeEntrada.get(int(entrada) - 1)
-            # TODO: Falta moverlo a leidos
             print(mensajeParaLeer.toString(False))
+            mensajeParaLeer.bandeja = "ML"
+            self.bandejaDeLeidos.add_mensaje(mensajeParaLeer)
+            self.bandejaDeEntrada.remove(mensajeParaLeer)
             input("Presione cualquier tecla para regresar a la bandeja de entrada: ")
 
     def mensajesLeidos(self) :
-        pass
+        while True :
+            print("BANDEJA DE MENSAJES LEIDOS")
+            self.bandejaDeLeidos.print()
+            entrada = input("Seleccione un mensaje para leer o 0 para regresar: ")
+            if entrada == '0' : return
+
+            mensajeParaLeer = self.bandejaDeLeidos.get(int(entrada) - 1)
+            print(mensajeParaLeer.toString(False))
+            input("Presione cualquier tecla para regresar a la bandeja de entrada: ")
 
     def borradores(self) :
         pass

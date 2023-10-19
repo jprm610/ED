@@ -21,6 +21,14 @@ class ListaSimple :
     def last(self) :
         return self.tail
     
+    def get(self, i) :
+        if i >= self.getSize() : raise Exception("i out of bounds!")
+        c = 0
+        tmp = self.head
+        while True :
+            if c == i : return tmp.getData()
+            tmp = tmp.getNext()
+
     def addFirst(self, e:object) :
         node = NodoSimple(e)
         if self.isEmpty() :
@@ -43,6 +51,12 @@ class ListaSimple :
 
     def removeFirst(self) :
         if self.isEmpty() : return None
+        if self.size == 1 :
+            tmp = self.head
+            self.head = None
+            self.tail = None
+            self.size -= 1
+            return tmp.getData()
         temp = self.head
         self.head = temp.getNext()
         temp.setNext(None)

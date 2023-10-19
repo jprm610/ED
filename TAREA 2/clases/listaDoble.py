@@ -51,11 +51,17 @@ class ListaDoble:
     def removeFirst(self):
         if self.isEmpty():
             return None
+        elif self.size == 1 :
+            tmp = self.head
+            self.head = None
+            self.tail = None
+            self.size -= 1
+            return tmp.getData()
         else:
             temp = self.head
             self.head = temp.getNext()
             temp.setNext(None)
-            self.head.setPrev(None)
+            self.head.prev = None
             self.size -= 1
             return temp.getData()
         
@@ -72,6 +78,7 @@ class ListaDoble:
         
     def remove(self, n):
         # Find node
+
         node = None
         tmp = self.head
         while True :
