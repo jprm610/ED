@@ -2,6 +2,7 @@ from mensajeria.contacto import Contacto
 from mensajeria.mensaje import Mensaje
 from mensajeria.bandejas.entrada import Entrada
 from mensajeria.bandejas.leidos import Leido
+from mensajeria.bandejas.borradores import Borradores
 
 class Empleado :
     def __init__(self, nombre, cedula, contraseña, fechaNacimiento, ciudadNacimiento, contacto:Contacto) -> None:
@@ -13,6 +14,7 @@ class Empleado :
         self.contacto = contacto
         self.bandejaDeEntrada = Entrada()
         self.bandejaDeLeidos = Leido()
+        self.bandejaDeBorradores = Borradores()
 
     def importarMensajes(self, nombreArchivo="Mensajes.txt") :
         with open(nombreArchivo, "r") as file :
@@ -32,6 +34,8 @@ class Empleado :
                 self.bandejaDeEntrada.addFirst(Mensaje(remitente, destinatario, time, asunto, texto, bandeja))
             elif destinatario == self.nombre and bandeja == "ML" :
                 self.bandejaDeLeidos.add_mensaje(Mensaje(remitente, destinatario, time, asunto, texto, bandeja))
+            elif remitente == self.nombre and bandeja == 'B' :
+                self.bandejaDeBorradores.agregar(Mensaje(remitente, destinatario, time, asunto, texto, bandeja))
 
     def bandejaEntrada(self) :
         while True :
@@ -59,7 +63,17 @@ class Empleado :
             input("Presione cualquier tecla para regresar a la bandeja de entrada: ")
 
     def borradores(self) :
-        pass
+        while True :
+            print("BANDEJA DE BORRADORES")
+            self.bandejaDeBorradores.print()
+            entrada = input("Seleccione un mensaje o 0 para regresar: ")
+            if entrada == '0' : return
+
+            mensajeParaEditar = self.bandejaDeBorradores.get(int(entrada) - 1)
+            print(mensajeParaEditar.toString(False))
+            entrada = input("Presione 1 para descartar el mensaje o 0 para volver: ")
+            if entrada == '1' :
+                self.bandejaDeBorradores.pop()
 
     def redactarMensaje(self) :
         pass

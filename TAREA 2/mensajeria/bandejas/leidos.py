@@ -10,6 +10,9 @@ class Leido(Queue):
        return self.first()
     
     def print(self) :
+        if self.size == 0 : 
+            print("No hay mensajes")
+            return
         c = 1
         tmp = self.head
         while True :

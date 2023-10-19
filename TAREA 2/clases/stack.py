@@ -1,27 +1,24 @@
 from clases.listaSimple import ListaSimple
 
-class Stack:
+class Stack(ListaSimple):
     def __init__(self) -> None:
-        self.data = ListaSimple()
-
-    def getSize(self):
-        return self.data.getSize()
+        super().__init__()
     
     def isEmpty(self):
         return self.getSize() == 0
     
     def push(self, e):
-        self.data.addFirst(e)
+        self.addFirst(e)
 
     def pop(self):
-        return self.data.removeFirst()
+        return self.removeFirst()
     
     def top(self):
         if not self.isEmpty():
-            return self.data.first().getData()
+            return self.first().getData()
         else:
             return None
         
     def print(self) :
-        self.data.print()
+        self.print()
     
