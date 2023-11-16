@@ -21,4 +21,6 @@ class Nodo:
 
     def set_right(self, new_right):
         self._right = new_right
+    def __str__(self):
+        return f"Nodo con data: {self._data}"
         

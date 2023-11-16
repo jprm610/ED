@@ -102,11 +102,15 @@ class BinaryTree:
             else:
                 p.set_right(None)
         self.size -= 1
-
+    
     def inorder(self, v):
         if self.hasLeft(v):
             self.inorder(self.get_left(v))
-        print(v.get_data())  # Visitar el nodo
+        print(v.get_data() if v else "None")  # Visitar el nodo o mostrar "None" si v es None
         if self.hasRight(v):
             self.inorder(self.get_right(v))
-            
+    def __str__(self):
+        return self.inorder_str(self.get_root())
+
+
+

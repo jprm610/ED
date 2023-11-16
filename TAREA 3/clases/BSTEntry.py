@@ -14,4 +14,6 @@ class BSTEntry:
 
     def setKey(self, key):
         self.key = key
+    def __str__(self):
+        return f"BSTEntry con data: {self.data}, key: {self.key}"
         
