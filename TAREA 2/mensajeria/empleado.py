@@ -82,7 +82,9 @@ class Empleado :
             print("2. Descartar ultimo borrador")
             entrada = input("Seleccione lo que quiera hacer: ")
             if entrada == '1' :
-                self.mensajesEnviados.agregar(self.bandejaDeBorradores.pop())
+                m = self.bandejaDeBorradores.pop()
+                m.bandeja = "BA"
+                self.mensajesEnviados.agregar(m)
             elif entrada == '2' :
                 self.bandejaDeBorradores.pop()
             else : return

@@ -50,5 +50,6 @@ def main() :
                 else : break
 
         user.exportarMensajes()
+        root.exportarEmpleados()
 
 main()
