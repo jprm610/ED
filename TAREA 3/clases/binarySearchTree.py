@@ -3,9 +3,6 @@ from clases.BSTEntry import BSTEntry
 from clases.nodo import Nodo
 import graphviz
 
-
-
-
 class BinarySearchTree(BinaryTree):
     def __init__(self, root_data=None):
         super().__init__(root_data)
@@ -109,6 +106,7 @@ class BinarySearchTree(BinaryTree):
         result += f"({v.get_data().getKey()}, {v.get_data().getData()}) "
         result += self.inorder_str(self.get_right(v))
         return result
+    
     def visualize_tree(self):
         dot = graphviz.Digraph()
         self._add_nodes_edges(dot, self.root)
@@ -126,3 +124,4 @@ class BinarySearchTree(BinaryTree):
                 dot.edge(str(entry.get_data().getKey()), str(right_child.get_data().getKey()))
                 self._add_nodes_edges(dot, right_child)
 
+    

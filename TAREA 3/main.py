@@ -5,19 +5,19 @@ from clases.binarySearchTree import BinarySearchTree
 abb = BinarySearchTree()
 
 # Insertar datos en el ABB
-abb.insert("Juan", 7)
-abb.insert("Pablo", 4)
-abb.insert("Maria", 9)
-abb.insert("Ana", 2)
-abb.insert("Diana", 10)
-abb.insert("Mateo", 8)
+abb.insert("Juan", 10101013)
+abb.insert("Pablo", 10001011)
+abb.insert("Maria", 10101015)
+abb.insert("Diana", 10111105)
+abb.insert("Ana", 1010000)
+abb.insert("Mateo", 1011005)
 
 # Imprimir el árbol antes de eliminar un nodo
 print("Árbol Inorder antes de eliminar un nodo:")
 print(str(abb))
 
 # Eliminar un nodo del ABB
-abb.remove(9)
+#abb.remove(2)
 
 # Imprimir el árbol después de eliminar un nodo
 print("Árbol Inorder después de eliminar un nodo:")

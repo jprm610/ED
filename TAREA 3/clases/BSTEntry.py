@@ -1,7 +1,7 @@
 class BSTEntry:
     def __init__(self, e, key):
         self.data = e
-        self.key = key
+        self.key = self.calcKey(key)
 
     def getData(self):
         return self.data
@@ -14,6 +14,14 @@ class BSTEntry:
 
     def setKey(self, key):
         self.key = key
+
+    def calcKey(self, cedula) :
+        string = str(cedula)
+        s = 0
+        for n in string :
+            s += int(n)
+        return s
+
     def __str__(self):
         return f"BSTEntry con data: {self.data}, key: {self.key}"
         

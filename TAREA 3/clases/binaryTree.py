@@ -1,6 +1,5 @@
 from clases.nodo import Nodo
 from collections import deque
-
 class BinaryTree:
     def __init__(self, root_data):
         if root_data is None :
@@ -37,19 +36,21 @@ class BinaryTree:
     def parent(self, v):
         if self.isRoot(v):
             return None
-        else:
-            Q = deque()
-            Q.append(self.get_root())
-            temp = self.get_root()
+        
+        Q = deque()
+        Q.append(self.get_root())
+        #Q = Queue()
+        #Q.enqueue(self.get_root())
+        temp = self.get_root()
 
-            while Q and (self.get_left(Q[0]) != v and self.get_right(Q[0]) != v):
-                temp = Q.popleft()
+        while Q and (self.get_left(Q[0]) != v and self.get_right(Q[0]) != v):
+            temp = Q.pop()
 
-                if self.hasLeft(temp):
-                    Q.append(self.get_left(temp))
-                if self.hasRight(temp):
-                    Q.append(self.get_right(temp))
-            return temp if Q else None
+            if self.hasLeft(temp):
+                Q.append(self.get_left(temp))
+            if self.hasRight(temp):
+                Q.append(self.get_right(temp))
+        return temp if Q else None
         
     def depth(self, node):
         if node is None:
