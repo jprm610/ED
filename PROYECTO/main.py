@@ -4,7 +4,8 @@ from clases.grafo import Grafo
 def main() :
     carreteras = readData()
 
-    G = construirGrafo(carreteras)
+    G = construirGrafo(carreteras[:10])
+    print(G.matrix)
 
 
 def readData(path='Datos vias Colombia.csv') :
@@ -17,10 +18,13 @@ def construirGrafo(df:pd.DataFrame) :
     # Vertices
     V = set(df['A'].to_list() + df['B'].to_list())
 
+    G = Grafo(V)
+
     # Aristas
-    E = []
     for i in range(len(df)) :
-        E.append(tuple(df.loc[i]))
+        G.agregarArista(*df.loc[i].to_list())
 
     # Crear grafo
-    return Grafo(V, E)
+    return G
+
+main()
