@@ -10,3 +10,8 @@ class Grafo :
         BIndex = self.V.index(B)
         self.matrix[AIndex, BIndex] = (KM, MINUTOS)
         self.matrix[BIndex, AIndex] = (KM, MINUTOS)
+
+    def checkCarretera(self, A, B) :
+        AIndex = self.V.index(A)
+        BIndex = self.V.index(B)
+        return isinstance(self.matrix[AIndex, BIndex], tuple)
